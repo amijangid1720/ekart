@@ -1,0 +1,25 @@
+<app-filter
+  [all]="products.length"
+  [inStock]="totalInStock"
+  [outOfStock]="totalOutStock"
+  (selectedRadioButtonChanged)="onFilterChanged($event)"
+></app-filter>
+<div class="ekart--products--container">
+  <!-- We want to repeat this app-product for each product in products array , 
+  We can also use *ngFor to loop over the array or to repeat a component selector  
+  Example of custom attribute binding using @Input() decorator-->
+
+  <!-- Best Use Case of ng-container is when we need to use more than one structural directive on 
+  a single element -->
+  <ng-container *ngFor="let product of products" >
+    <!-- We cannot use two structural directives on a single element -->
+    <!-- *ngIf="selectedFilter==='all' || product.is_in_inventory.toString()===selectedFilter" -->
+    <app-product
+      [product]="product"
+      *ngIf="
+        searchText === '' || product.name.toLowerCase().includes(searchText)
+      "
+      (click)="selectedProduct = product"
+    ></app-product>
+  </ng-container>
+</div>

@@ -1,0 +1,27 @@
+<div class="ekart--search--product">
+  <input
+    class="ekart-search-product-input"
+    #searchInput
+    />
+    <!-- used this for two way data binding and custom event binding in case when we want to start search 
+        as soon user starts typing 
+    [(ngModel)]="searchText"
+    (input)="onSearchTextChanged()" -->
+  
+  <button class="btn btn-search"
+    (click)="updateSearchText()">
+    <!-- [ngClass]="{
+      btn: true,
+      'btn-search': searchText,
+      'btn-search-disabled': !searchText
+    }"
+    [disabled]="!searchText"
+  > -->
+    Search
+  </button>
+</div>
+<div class="ekart-search-result-for">
+  <p *ngIf="searchText != ''">
+    <strong>Search result for:</strong> {{ searchText }}
+  </p>
+</div>

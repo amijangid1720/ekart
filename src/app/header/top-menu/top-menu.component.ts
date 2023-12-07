@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./top-menu.component.css']
 })
 export class TopMenuComponent {
-
+ topMenuItemsList:string[]=["Help","Exchange & Returns","Order Tracker","SignUp/Login"]
 }
